@@ -1,0 +1,11 @@
+
+       <mat-menu #menu="matMenu">
+        <ng-template matMenuContent>
+            <button mat-menu-item>Settings</button>
+            <button mat-menu-item>Help</button>
+          </ng-template>
+    </mat-menu>
+                
+<button mat-button [matMenuTriggerFor]="menu">
+    <span class="material-icons">more_horiz</span>
+</button>

@@ -1,0 +1,54 @@
+<mat-card>
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+        <mat-icon class="close-icon" >close</mat-icon>
+      </button>
+    <h1>Create Meeting</h1>
+    
+    <mat-card-content>
+        <form class="meet-form">
+            <p>
+               
+               
+            <mat-form-field class="full-width">
+                <mat-label>Meet Id</mat-label>
+                <input maxlength="20" matInput name="meetId" [(ngModel)]="meetId" disabled>
+            </mat-form-field>
+            </p>
+            <p>
+            <mat-form-field class="full-width">
+                <mat-label>Meet Url</mat-label>
+                <input matInput maxlength="30" [(ngModel)]="meeting.meetingUrl" placeholder="Url" name="meetUrl" required>
+            </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="full-width">
+                    <mat-label>Meet Location</mat-label>
+                    <input maxlength="20" matInput placeholder="Location" name="location" [(ngModel)]="l" >
+                </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="full-width">
+                        <mat-label>Choose a date</mat-label>
+                        
+                        <input name="selectedDate" [min]="todayDate" [(ngModel)]="selectedDate" matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                </p>
+               
+
+               
+                <p>
+                    <mat-form-field>
+                            <input name="time" matInput [(ngModel)]="time" type="time" placeholder="Time">
+                     </mat-form-field>
+                </p>
+                <p>
+                    <mat-checkbox   [(ngModel)]="meeting.published" name="Published">Is Published</mat-checkbox>
+                  </p>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button mat-dialog-close (click)= "onSubmit()"color="primary">Create</button>
+    </mat-card-actions>
+</mat-card>

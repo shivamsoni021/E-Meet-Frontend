@@ -1,0 +1,125 @@
+<div  class="centerdata">
+    <h1 style="text-align: center;">Create User</h1>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="login-form">
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Username </mat-label> 
+        <input maxlength="20"  matInput placeholder="Username" name="username" formControlName="username">
+    </mat-form-field>
+    <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+
+  <div *ngIf="username?.errors?.['required']">
+    <p class="alert-text">Name is required.</p>
+  </div>
+  <div *ngIf="username?.errors?.['minlength']">
+    <p class="alert-text">Name must be at least 4 characters long.</p>
+  </div>
+  </div>
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input maxlength="20"  matInput formControlName="firstName"  placeholder="First Name" name="firstName">
+</mat-form-field>
+<mat-form-field class="full-width" appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input maxlength="20"  matInput formControlName="lastName"  placeholder="Last Name" name="lastName">
+</mat-form-field>
+    <br>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Email" name="email">
+    </mat-form-field>
+    <br>
+
+    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+
+        <div *ngIf="email?.errors?.['required']">
+          <p class="alert-text">Email is required.</p>
+        </div>
+        <div *ngIf="email?.errors?.['email']">
+          <p class="alert-text">Email is invalid.</p>
+        </div>
+        </div>
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input maxlength="30" matInput formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Username" name="password">
+    </mat-form-field>
+    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+        <div *ngIf="password?.errors?.['required']">
+          <p class="alert-text">Password is required.</p>
+        </div>
+        <div *ngIf="password?.errors?.['minlength']">
+          <p class="alert-text">Password must be at least 8 characters long.</p>
+        </div>
+        </div>
+    <br>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Contact</mat-label>
+        <input maxlength="10"  matInput formControlName="phoneno" placeholder="Contact" name="phoneno">
+    </mat-form-field>
+    <div *ngIf="phoneno?.invalid && (phoneno?.dirty || phoneno?.touched)">
+        <div *ngIf="phoneno?.errors?.['required']">
+          <p class="alert-text">Phone number is required.</p>
+        </div>
+        <div *ngIf="phoneno?.errors?.['minlength'] || phoneno?.errors?.['maxlength']">
+          <p class="alert-text">Contact must consist 10 numbers</p>
+        </div>
+        </div>
+    <br>
+    <button type="submit" mat-dialog-close class="full-width" mat-raised-button color="primary">Create</button>
+</form>
+</div>
+
+<!-- <div  class="centerdata">
+            <h1 style="text-align: center;">Create User</h1>
+            <form class="login-form">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Username</mat-label>
+                <input  matInput placeholder="Username" name="username" [(ngModel)]="username" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input  matInput [(ngModel)]="email" placeholder="Email" name="email" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input  matInput [(ngModel)]="password" [type]="hide ? 'password' : 'text'" placeholder="Username" name="password" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Contact</mat-label>
+                <input  matInput [(ngModel)]="phoneno" placeholder="Contact" name="phoneno" required>
+            </mat-form-field>
+            <br>
+            <button  class="full-width" mat-raised-button (click)= "onSubmit()"color="primary">Create</button>
+        </form>
+    </div> -->
+
+
+<!-- <div  class="centerdata">
+            <h1 style="text-align: center;">Create User</h1>
+            <form class="login-form">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Username</mat-label>
+                <input  matInput placeholder="Username" name="username" [(ngModel)]="username" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input  matInput [(ngModel)]="email" placeholder="Email" name="email" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input  matInput [(ngModel)]="password" [type]="hide ? 'password' : 'text'" placeholder="Username" name="password" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Contact</mat-label>
+                <input  matInput [(ngModel)]="phoneno" placeholder="Contact" name="phoneno" required>
+            </mat-form-field>
+            <br>
+            <button  class="full-width" mat-raised-button (click)= "onSubmit()"color="primary">Create</button>
+        </form>
+    </div> -->

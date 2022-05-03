@@ -1,0 +1,21 @@
+
+  table{
+    width: 100%;
+  }
+
+  h2{
+    text-align: center;
+}
+
+
+.close-button{
+  margin-left: 99%;
+ float: right;
+}
+.close-icon {
+  transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+  transform: rotate(180deg);
+}

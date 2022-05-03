@@ -1,0 +1,43 @@
+table{
+    width: 100%;
+  }
+
+.row-button{
+    text-align:center;
+    margin-left:-20px;
+    margin-right:-20px;
+}
+.row-button{
+    text-align:center;
+    margin-left:-20px;
+    margin-right:-20px;
+  }
+
+.assign-button{
+    margin-top:15px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    display:inline-block;
+}
+table th
+{
+  font-weight: 900;
+  font-size: medium;
+  background-color: rgb(228, 228, 228);
+  text-align: center;
+}
+table td{
+ text-align: center;
+}
+.close-button{
+ margin-left: 99%;
+ float: right;
+}
+.close-icon {
+  transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+  transform: rotate(180deg);
+}

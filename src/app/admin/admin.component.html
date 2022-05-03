@@ -1,0 +1,95 @@
+
+<div align="end" style="margin-right: 0%;" class="admin-options">
+    <h2  style="float:left">Registered Users</h2>
+    <!-- <div style="height: 20px;"><button mat-mini-fab class="refresh" (click)="reloadCurrentPage()"> -->
+        <mat-icon class="icons" matTooltipPosition=right  matTooltip="Refresh" (click)="reloadCurrentPage()">refresh</mat-icon>
+        <mat-icon  matTooltip="Search User" matTooltipPosition=right  (click)="togglePanel()" class="material-icons-outlined icons">filter_alt</mat-icon>
+        <mat-icon   matTooltip="Add User" matTooltipPosition=right class="material-icons-outlined icons" (click)="createUser()" >add</mat-icon>
+        
+    <!-- </button> -->
+<!-- </div> -->
+</div>
+
+<div class="admin-div">
+
+        <div class="filter-expansion">
+            <div style="text-align:end">
+        
+            <mat-accordion>
+                <mat-expansion-panel class="mat-elevation-z0" [expanded]="panelOpenState">
+                    
+                    <mat-form-field appearance="standard">
+                        <mat-label>Search</mat-label>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+                    </mat-form-field>
+            
+                </mat-expansion-panel>
+              </mat-accordion>
+              </div>
+        </div>
+
+    <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="no">
+            <th  mat-header-cell *matHeaderCellDef>No.</th>
+            <td  mat-cell *matCellDef="let element; let i=index">{{i + 1}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef>User Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+            <th mat-header-cell *matHeaderCellDef>First Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+            <th mat-header-cell *matHeaderCellDef>Last Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+        
+
+
+        <ng-container matColumnDef="phoneno">
+            <th mat-header-cell *matHeaderCellDef>Phone Number</th>
+            <td mat-cell *matCellDef="let element">{{ element.phoneno }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">{{ element.isActive ===true ? 'Active' : 'Inactive'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="modify">
+            <th mat-header-cell *matHeaderCellDef >Actions</th>
+
+            <td   mat-cell *matCellDef="let element">
+
+                <button mat-button [matMenuTriggerFor]="menu">
+                    <span class="material-icons">more_horiz</span>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button (click)="disableUser(element.id,element.username,element.isActive)" mat-menu-item>{{ element.isActive ===true ? 'InActive' : 'Active'}}</button>
+                    <button (click)="assignMeet(element.id, 'assign')" mat-menu-item>Assign Meet</button>
+                    <button mat-menu-item (click)="viewMeet(element.id)">View Participated Meet</button>
+                    <button mat-menu-item (click)="listOfRequestMeet(element.id)">View Request Meet</button>
+
+                </mat-menu>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnName"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnName;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10,20]" showFirstLastButtons></mat-paginator>
+</div>

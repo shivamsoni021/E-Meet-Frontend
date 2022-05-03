@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+    <!-- <span class="navheading">E-Meet</span> -->
+    <h1>E-Meet</h1>
+    <span class="example-spacer"></span>
+<button *ngIf="isLogin()" mat-mini-fab color="warm"  [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    
+    
+  
+    <button *ngIf="isAdmin()==true" (click)="navigateToUsers()" mat-menu-item>
+      <mat-icon>people</mat-icon>
+      <span>Users List</span>
+    </button>
+    <button *ngIf="isAdmin()==true" (click)="meetList()" mat-menu-item>
+      <mat-icon>list</mat-icon>
+      <span>Meeting List</span>
+    </button>
+
+    
+    <button *ngIf="isLogin()==true" (click)="logout()" mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>logout</span>
+    </button>  
+  </mat-menu>
+  </mat-toolbar>

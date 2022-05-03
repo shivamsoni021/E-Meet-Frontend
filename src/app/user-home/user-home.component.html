@@ -1,0 +1,71 @@
+
+
+
+
+<div  class="userButton" align="end">
+<button  mat-raised-button style="margin: 10px;" (click)= "requestMeeting()"color="primary" >Request Meeting</button>
+<button mat-raised-button style="margin: 10px;" (click)= "viewRequestedMeeting()"color="basic" >View Requested Meeting</button>
+</div>
+
+<div class="meet-list">
+    <h1 >List of Meetings</h1>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        
+        <ng-container matColumnDef="no">
+            <th mat-header-cell *matHeaderCellDef>No.</th>
+            <td mat-cell *matCellDef="let element;let i=index">{{ i+1 }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="meetingUrl">
+            <th mat-header-cell *matHeaderCellDef>Meeting Url</th>
+            <td mat-cell  *matCellDef="let element" [ngClass]="{'disable':element.disable===true ,
+            'success':element.location===preferedMeeting.location 
+            && element.disable===false 
+        }"><a href="{{element.meetingUrl}}" [class.disable]="element.disable" target="_blank">{{ element.meetingUrl }}</a></td>
+        </ng-container>
+        
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef>Time</th>
+            <td mat-cell *matCellDef="let element">{{element.time }}</td>
+        </ng-container>
+        
+    
+        <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef>Location</th>
+            <td mat-cell *matCellDef="let element" [class.text-success]="element.location==preferedMeeting.location" >{{ element.location }}</td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="columnName"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnName;"></tr>
+        
+    </table>
+
+ 
+
+<footer>
+    
+   
+
+<div style="float: left;background-color: white" >
+    <div class="prefered"></div>Prefered Meeting
+</div>
+<br>
+<div style="float: left;bottom: 0; background-color: white">
+    <div class="cancel"></div>Cancel Meeting
+</div>
+<div style="float: right;">
+    <mat-paginator  class="page" [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons 
+    aria-label="Select page of periodic elements">
+     </mat-paginator>
+</div>
+</footer>
+</div>
+
+
+

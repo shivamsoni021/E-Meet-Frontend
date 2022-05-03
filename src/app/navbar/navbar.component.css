@@ -1,0 +1,18 @@
+.example-spacer {
+    margin-left: 90%;
+  }
+mat-toolbar{
+  color: white;
+  text-align: center;
+  height: 75px;
+  /* background-color: gray; */
+}
+h1{
+  color: cornsilk;
+  transform: scale(1.2);
+  margin-left: 5%;
+}
+/* 
+.navbarcolor{
+  background-color: #80CBC4;
+} */

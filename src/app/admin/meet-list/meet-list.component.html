@@ -1,0 +1,95 @@
+<div class="meet-list">
+
+    
+    <div align="end" class="admin-options">
+        <h2 style="float:left">Meetings</h2>
+            <mat-icon class="icons" matTooltipPosition=right  matTooltip="Refresh" (click)="reloadCurrentPage()">refresh</mat-icon>
+            <mat-icon (click)="togglePanel()" matTooltipPosition=right  matTooltip="Search" class="material-icons-outlined icons">filter_alt</mat-icon>
+            <mat-icon  (click)="createMeeting()" matTooltipPosition=right  matTooltip="Add Meeting" class="material-icons-outlined icons" >add</mat-icon>
+    </div>
+    <div class="admin-div mat-elevation-z0">
+    
+        <div style="text-align:end">
+            <div class="filter-expansion">
+        
+                <mat-accordion>
+                    <mat-expansion-panel class="mat-elevation-z0" [expanded]="panelOpenState">
+                        
+                        <mat-form-field appearance="standard">
+                            <mat-label>Search</mat-label>
+                            <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+                        </mat-form-field>
+                
+                    </mat-expansion-panel>
+                  </mat-accordion>
+            </div>
+        <!-- <mat-form-field  appearance="standard" class="container search">
+            <mat-label>Filter : By MeetingID</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+        </mat-form-field>
+     -->
+    </div>
+    <div class="table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
+
+            <ng-container matColumnDef="no">
+                <th mat-header-cell *matHeaderCellDef>No.</th>
+                <td mat-cell *matCellDef="let element;let i=index">{{ i+1 }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="meetingId">
+                <th mat-header-cell *matHeaderCellDef>Meeting Id</th>
+                <td mat-cell *matCellDef="let element">{{ element.meetingId }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="meetingUrl">
+                <th mat-header-cell *matHeaderCellDef>Meeting Url</th>
+                <td mat-cell *matCellDef="let element"><a  matTooltip="Click to join the meeting" (click)="navigateToMeeting(element.meetingUrl)" [class.disable]="element.disable">{{ element.meetingUrl }}</a></td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef>Date</th>
+                <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+            </ng-container>
+            
+
+            <ng-container matColumnDef="time">
+                <th mat-header-cell *matHeaderCellDef>Time</th>
+                <td mat-cell *matCellDef="let element">{{ element.time }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="location">
+                <th mat-header-cell *matHeaderCellDef>Location</th>
+                <td mat-cell *matCellDef="let element">{{ element.location }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="published">
+                <th mat-header-cell *matHeaderCellDef>Published</th>
+                <td mat-cell *matCellDef="let element">{{ element.published }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="modify">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button [matMenuTriggerFor]="menu" [disabled]="element.disable">
+                        <span class="material-icons">more_horiz</span>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button (click)="assignUser(element,element.id)" mat-menu-item>Assign Users</button>
+                        <button *ngIf=" element.published===false" (click)="publishMeeting(element.id)" mat-menu-item>Publish</button>
+                        <button (click)="cancelMeeting(element,element.id)" mat-menu-item>Cancel Meeting</button>
+                        <button mat-menu-item (click)="viewUsers(element,element.id)">View participated Users</button>
+                    </mat-menu>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnName"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnName;"></tr>
+
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons aria-label="Select page of meetings">
+        </mat-paginator>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="login-body">
+<div class="mat-card-div">
+<mat-card>
+    <h1>Login</h1>
+    <mat-card-content>
+        <form class="login-form">
+            <p>
+            <mat-form-field class="full-width">
+                <mat-label>Username</mat-label>
+                <input maxlength="20" matInput placeholder="Username" name="username" [(ngModel)]="username" required>
+            </mat-form-field>
+            </p>
+            <p>
+            <mat-form-field class="full-width">
+                <mat-label>Password</mat-label>
+                <input matInput maxlength="20" [(ngModel)]="password" [type]="hide ? 'password' : 'text'" placeholder="Password" name="password" required>
+            </mat-form-field>
+            </p>
+        </form>
+    </mat-card-content>
+    <div style="padding: 5%;"> 
+        <button  mat-raised-button (click)= "onSubmit()" color="primary">Login</button>
+        <button  mat-raised-button (click)= "RegsiterUser()" color="primary">SignUp</button>
+    </div>
+</mat-card>
+</div>
+</div>
